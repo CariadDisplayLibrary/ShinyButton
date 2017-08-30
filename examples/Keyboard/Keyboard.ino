@@ -50,7 +50,8 @@ void handleKeypress(int keycode) {
 
     // 13 is return (^M)
     if (keycode == 13) {
-        input[0] = 0;
+        input[0] = '|';
+        input[1] = 0;
         ipos = 0;
     }
 
