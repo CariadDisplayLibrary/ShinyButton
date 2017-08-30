@@ -8,6 +8,8 @@ class ShinyButton : public Widget {
     private:
         color_t _light;
         color_t _dark;
+        color_t _lightHi;
+        color_t _darkHi;
 
         color_t *_buffer;
         const char *_text;
@@ -17,7 +19,7 @@ class ShinyButton : public Widget {
         
     public:
 
-        ShinyButton(Touch &t, DisplayCore &d, int x, int y, int w, int h, color_t light, color_t dark, const char *text, int offset, color_t tcol, const uint8_t *f) : Widget(t, d, x, y) {
+        ShinyButton(Touch &t, DisplayCore &d, int x, int y, int w, int h, color_t light, color_t dark, color_t lightHi, color_t darkHi, const char *text, int offset, color_t tcol, const uint8_t *f) : Widget(t, d, x, y) {
             _width = w;
             _height = h;
             _sense_x = 0;
@@ -28,6 +30,8 @@ class ShinyButton : public Widget {
             _touch = true;
             _light = light;
             _dark = dark;
+            _lightHi = lightHi;
+            _darkHi = darkHi;
             _offset = offset;
             _font = f;
             _fontColor = tcol;
@@ -38,6 +42,7 @@ class ShinyButton : public Widget {
         void draw(DisplayCore *dev, int x, int y);
         void setText(const char *t);
         void setBackground(color_t h, color_t l);
+        void setHighlight(color_t h, color_t l);
         void setColor(color_t c);
 };
 

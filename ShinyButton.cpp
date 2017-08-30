@@ -17,23 +17,26 @@ void ShinyButton::draw(DisplayCore *dev, int x, int y) {
 
     color_t buf[_width * _height];
     _buffer = buf;
+
+    int hi = _value > 0 ? _lightHi : _light;
+    int lo = _value > 0 ? _darkHi : _dark;
                 
-    color_t midpoint = dev->mix(_light, _dark, 128);
+    color_t midpoint = dev->mix(hi, lo, 128);
     openWindow(0, 0, _width, _height);
     for (int y = 0; y < _height; y++) {
         int rowcol = 0;
         if (y < (_height/2)) {
-            rowcol = dev->mix(_light, midpoint, (y*255 / (_height/2)));
+            rowcol = dev->mix(hi, midpoint, (y*255 / (_height/2)));
         } else {
-            rowcol = dev->mix(_dark, midpoint, ((y - (_height/2)) * 255 / (_height/2)));
+            rowcol = dev->mix(lo, midpoint, ((y - (_height/2)) * 255 / (_height/2)));
         }
         for (int x = 0; x < _width; x++) {
             if ((x == 0) && (y == 0)) windowData(Color::Black);
             else if ((x == 0) && (y == _height-1)) windowData(Color::Black);
             else if ((x == _width-1) && (y == 0)) windowData(Color::Black);
             else if ((x == _width-1) && (y == _height-1)) windowData(Color::Black);
-            else if ((x == 0) || (y == 0)) windowData(_light);
-            else if ((x == _width-1) || (y == _height-1)) windowData(_dark);
+            else if ((x == 0) || (y == 0)) windowData(hi);
+            else if ((x == _width-1) || (y == _height-1)) windowData(lo);
             else windowData(rowcol);
         }
     }
@@ -41,7 +44,7 @@ void ShinyButton::draw(DisplayCore *dev, int x, int y) {
     setFont(_font);
     int fw = stringWidth(_text);
     int fh = stringHeight(_text);
-    setTextColor(_dark, _dark);
+    setTextColor(lo, lo);
     setCursor(_width / 2 - fw / 2 + 1, _height / 2 - fh / 2 + 1 + _offset);
     print(_text);
     setTextColor(_fontColor, _fontColor);
@@ -60,6 +63,12 @@ void ShinyButton::setText(const char *t) {
 void ShinyButton::setBackground(color_t h, color_t l) {
     _light = h;
     _dark = l;
+    _redraw = true;
+}
+
+void ShinyButton::setHighlight(color_t h, color_t l) {
+    _lightHi = h;
+    _darkHi = l;
     _redraw = true;
 }
 
