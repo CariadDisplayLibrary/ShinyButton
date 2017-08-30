@@ -4,18 +4,14 @@
 #include <ShinyButton.h>
 #include <Roboto.h>
 
+// You'll want to change this to match your screen
 DSPI1 spi;
 HX8347D tft(spi, 7, 10); // D/C and CS pins
 XPT2046 ts(spi, 4, 240, 320);  // 4 = touch chip select
 
-USBFS usbDevice;
-USBManager USB(usbDevice, 0xf055, 0xf002, "Majenko Technologies", "USB TFT Keyboard");
-CDCACM uSerial;
-
 #define TEXTSIZE 30
 char input[TEXTSIZE] = {'|', 0};
 int ipos = 0;
-bool textUpdate = true;
 
 // We can use a ShinyButton for displaying text if we like - they are versatile.
 ShinyButton textArea(ts, tft, 
@@ -68,8 +64,6 @@ void handleKeypress(int keycode) {
 }
 
 void setup() {
-    USB.addDevice(uSerial);
-    USB.begin();
 
     // Backlight on the WaveShare 2.8" TFT
     pinMode(9, OUTPUT);
