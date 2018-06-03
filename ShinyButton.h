@@ -158,6 +158,8 @@ class ShinyKeyboard : public Widget {
 
         void setKeyData(const struct KeyboardCode *data) {
             _keycaps = data;
+            setupKeyboardData();
+            _redraw = true;
         }
 
         void setMode(int mode);
@@ -166,5 +168,70 @@ class ShinyKeyboard : public Widget {
             _onKeypress = func;
         }
 };
+
+class ShinyKeypad : public Widget {
+    private:
+        ShinyButton btn_1;
+        ShinyButton btn_2;
+        ShinyButton btn_3;
+        ShinyButton btn_4;
+        ShinyButton btn_5;
+        ShinyButton btn_6;
+        ShinyButton btn_7;
+        ShinyButton btn_8;
+        ShinyButton btn_9;
+        ShinyButton btn_star;
+        ShinyButton btn_0;
+        ShinyButton btn_hash;
+
+        int _scale;
+        const uint8_t *_font;
+
+        color_t _colHi;
+        color_t _colLo;
+        color_t _colPressHi;
+        color_t _colPressLo;
+
+        void setupKeyboardData();
+
+        const struct KeyboardCode *_keycaps;
+        int _mode;
+        bool _modeLock;
+
+        ShinyButton *buttons[12];
+
+        void (*_onKeypress)(int);
+
+    public:
+        static const struct KeyboardCode Phone[12];
+        static const struct KeyboardCode Decimal[12];
+
+        // Object based event handing (NEW)
+        void handleTap(Event *e);
+        void handlePress(Event *e);
+        void handleRelease(Event *e);
+//        void handleRepeat(Event *e);
+//        void handleDrag(Event *e);
+
+        ShinyKeypad(Touch &ts, DisplayCore &dev, int x, int y, int scale, color_t colHi, color_t colLo, color_t colPressHi, color_t colPressLo, color_t colFont, const uint8_t *font);
+
+        void draw(DisplayCore *dev, int x, int y);
+        void render();
+        void redraw();
+        void setLocation(int x, int y);
+
+        void setKeyData(const struct KeyboardCode *data) {
+            _keycaps = data;
+            setupKeyboardData();
+            _redraw = true;
+        }
+
+        void setMode(int mode);
+
+        void onKeypress(void (*func)(int)) {
+            _onKeypress = func;
+        }
+};
+
 
 #endif
