@@ -13,7 +13,7 @@ XBSC-Subgroup: Toolkits
 Depends: libdisplaycore-core
 Recommends: libdisplaycore-fonts-liberationsans
 Provides: ShinyButton.h
-Description: ShinyButton library
+Description: ShinyButton
 
 
 
