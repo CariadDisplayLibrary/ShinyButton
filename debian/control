@@ -11,7 +11,7 @@ Architecture: all
 XBSC-Group: DisplayCore
 XBSC-Subgroup: Toolkits
 Depends: libdisplaycore-core
-Recommends: libdisplaycore-fonts-liberationsans
+Recommends: libdisplaycore-font-liberationsans
 Provides: ShinyButton.h
 Description: ShinyButton
 
