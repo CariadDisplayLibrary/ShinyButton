@@ -1,5 +1,4 @@
-ShinyKeypad.cpp libraries/DisplayCore/ShinyButton
-ShinyKeyboard.cpp libraries/DisplayCore/ShinyButton
-ShinyButton.cpp libraries/DisplayCore/ShinyButton
-ShinyButton.h libraries/DisplayCore/ShinyButton
-examples/ libraries/DisplayCore/ShinyButton
+examples libraries/DisplayCore/ShinyButton
+library.json libraries/DisplayCore/ShinyButton
+library.properties libraries/DisplayCore/ShinyButton
+src libraries/DisplayCore/ShinyButton
