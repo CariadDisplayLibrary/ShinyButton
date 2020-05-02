@@ -13,7 +13,7 @@ color_t ShinyButton::colorAt(int x, int y) {
     return _buffer[offset];
 }
 
-void ShinyButton::draw(DisplayCore *dev, int x, int y) {
+void ShinyButton::draw(Cariad *dev, int x, int y) {
 
     color_t buf[_width * _height];
     _buffer = buf;

@@ -31,7 +31,7 @@ const struct KeyboardCode ShinyKeyboard::UK[4*62] = {
 };
 
 
-ShinyKeyboard::ShinyKeyboard(Touch &ts, DisplayCore &dev, int x, int y, int scale, color_t colHi, color_t colLo, color_t colPressHi, color_t colPressLo, color_t colFont, const uint8_t *font)  : Widget(ts, dev, x, y),
+ShinyKeyboard::ShinyKeyboard(Touch &ts, Cariad &dev, int x, int y, int scale, color_t colHi, color_t colLo, color_t colPressHi, color_t colPressLo, color_t colFont, const uint8_t *font)  : Widget(ts, dev, x, y),
             btn_backtick         (ts, dev, KEYPOS(0, 0),     KEYSIZE(4, 4),      colHi, colLo, colPressHi, colPressLo, "`", 0, colFont, font),
             btn_1                (ts, dev, KEYPOS(4, 0),     KEYSIZE(4, 4),      colHi, colLo, colPressHi, colPressLo, "1", 0, colFont, font),
             btn_2                (ts, dev, KEYPOS(8, 0),     KEYSIZE(4, 4),      colHi, colLo, colPressHi, colPressLo, "2", 0, colFont, font),
@@ -186,7 +186,7 @@ ShinyKeyboard::ShinyKeyboard(Touch &ts, DisplayCore &dev, int x, int y, int scal
 }
 
 
-void ShinyKeyboard::draw(DisplayCore *dev, int x, int y) {
+void ShinyKeyboard::draw(Cariad *dev, int x, int y) {
 }
 
 void ShinyKeyboard::render() {

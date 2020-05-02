@@ -1,7 +1,7 @@
 #ifndef _SHINY_BUTTON_H
 #define _SHINY_BUTTON_H
 
-#include <DisplayCore.h>
+#include <Cariad.h>
 
 class ShinyButton : public Widget {
 
@@ -19,7 +19,7 @@ class ShinyButton : public Widget {
         
     public:
 
-        ShinyButton(Touch &t, DisplayCore &d, int x, int y, int w, int h, color_t light, color_t dark, color_t lightHi, color_t darkHi, const char *text, int offset, color_t tcol, const uint8_t *f) : Widget(t, d, x, y) {
+        ShinyButton(Touch &t, Cariad &d, int x, int y, int w, int h, color_t light, color_t dark, color_t lightHi, color_t darkHi, const char *text, int offset, color_t tcol, const uint8_t *f) : Widget(t, d, x, y) {
             _width = w;
             _height = h;
             _sense_x = 0;
@@ -39,7 +39,7 @@ class ShinyButton : public Widget {
 
         void setPixel(int x, int y, color_t col);
         color_t colorAt(int x, int y);
-        void draw(DisplayCore *dev, int x, int y);
+        void draw(Cariad *dev, int x, int y);
         void setText(const char *t);
         void setBackground(color_t h, color_t l);
         void setHighlight(color_t h, color_t l);
@@ -149,9 +149,9 @@ class ShinyKeyboard : public Widget {
 //        void handleRepeat(Event *e);
 //        void handleDrag(Event *e);
 
-        ShinyKeyboard(Touch &ts, DisplayCore &dev, int x, int y, int scale, color_t colHi, color_t colLo, color_t colPressHi, color_t colPressLo, color_t colFont, const uint8_t *font);
+        ShinyKeyboard(Touch &ts, Cariad &dev, int x, int y, int scale, color_t colHi, color_t colLo, color_t colPressHi, color_t colPressLo, color_t colFont, const uint8_t *font);
 
-        void draw(DisplayCore *dev, int x, int y);
+        void draw(Cariad *dev, int x, int y);
         void render();
         void redraw();
         void setLocation(int x, int y);
@@ -213,9 +213,9 @@ class ShinyKeypad : public Widget {
 //        void handleRepeat(Event *e);
 //        void handleDrag(Event *e);
 
-        ShinyKeypad(Touch &ts, DisplayCore &dev, int x, int y, int scale, color_t colHi, color_t colLo, color_t colPressHi, color_t colPressLo, color_t colFont, const uint8_t *font);
+        ShinyKeypad(Touch &ts, Cariad &dev, int x, int y, int scale, color_t colHi, color_t colLo, color_t colPressHi, color_t colPressLo, color_t colFont, const uint8_t *font);
 
-        void draw(DisplayCore *dev, int x, int y);
+        void draw(Cariad *dev, int x, int y);
         void render();
         void redraw();
         void setLocation(int x, int y);
